@@ -1,0 +1,12 @@
+{
+  "Altitude(Alt)": "Vertical angle above the horizon, from 0° (horizon) to 90° (zenith or directly overhead)",
+  "Azimuth(Az)": "Compass direction along the horizon: 0° = North, 90° = East, 180° = South, 270° = West",
+  "Right Ascension(RA)": "Celestial equivalent of longitude, measured in hours: 0h to 24h around the sky",
+  "Declination(Dec)": "Celestial equivalent of latitude, from –90° (south celestial pole) to +90° (north celestial pole)",
+  "Latitude(Lat)": "Observer's north-south position on Earth, from –90° (South Pole) to +90° (North Pole), 0° at Equator",
+  "Longitude(Lon)": "Observer's east-west position on Earth, from –180° to +180°, 0° at the Prime Meridian (Greenwich, UK)",
+  "Magnitude": "Apparent brightness of a star. Lower or negative numbers are brighter; higher numbers are dimmer",
+  "Star type": "Spectral class based on temperature and mass: O and B are hot, young, and massive; K and M are cooler and often older or giant stars",
+  "Pressure": "Atmospheric pressure in inches of mercury (inHg); lower values often mean storms, higher values mean clearer weather",
+  "inHg": "Inches of Mercury, a unit of atmospheric pressure (standard sea level is ~29.92 inHg)"
+}

@@ -1,0 +1,157 @@
+{
+  "Sun": {
+    "constellation": "none",
+    "distance_ly": 0.0000158,
+    "spectral_type": "G2V",
+    "app_mag": -26.74,
+    "mass_msun": 1.0
+  },
+  "Sirius": {
+    "constellation": "Canis Major",
+    "distance_ly": 8.6,
+    "spectral_type": "A1V",
+    "app_mag": -1.46,
+    "mass_msun": 2.0
+  },
+  "Canopus": {
+    "constellation": "Carina",
+    "distance_ly": 310,
+    "spectral_type": "A9II",
+    "app_mag": -0.74,
+    "mass_msun": 8.0
+  },
+  "Alpha Centauri": {
+    "constellation": "Centaurus",
+    "distance_ly": 4.37,
+    "spectral_type": "G2V + K1V",
+    "app_mag": -0.27,
+    "mass_msun": 2.0
+  },
+  "Arcturus": {
+    "constellation": "Boötes",
+    "distance_ly": 36.7,
+    "spectral_type": "K1.5III",
+    "app_mag": -0.05,
+    "mass_msun": 1.1
+  },
+  "Vega": {
+    "constellation": "Lyra",
+    "distance_ly": 25.0,
+    "spectral_type": "A0V",
+    "app_mag": 0.03,
+    "mass_msun": 2.1
+  },
+  "Capella": {
+    "constellation": "Auriga",
+    "distance_ly": 43.0,
+    "spectral_type": "G8III + G0III",
+    "app_mag": 0.08,
+    "mass_msun": 2.7
+  },
+  "Rigel": {
+    "constellation": "Orion",
+    "distance_ly": 860,
+    "spectral_type": "B8Ia",
+    "app_mag": 0.13,
+    "mass_msun": 18.0
+  },
+  "Procyon": {
+    "constellation": "Canis Minor",
+    "distance_ly": 11.4,
+    "spectral_type": "F5IV-V",
+    "app_mag": 0.37,
+    "mass_msun": 1.5
+  },
+  "Betelgeuse": {
+    "constellation": "Orion",
+    "distance_ly": 724,
+    "spectral_type": "M1–M2Ia–ab",
+    "app_mag": 0.42,
+    "mass_msun": 18.0
+  },
+  "Achernar": {
+    "constellation": "Eridanus",
+    "distance_ly": 140,
+    "spectral_type": "B6Vep",
+    "app_mag": 0.46,
+    "mass_msun": 6.0
+  },
+  "Hadar": {
+    "constellation": "Centaurus",
+    "distance_ly": 390,
+    "spectral_type": "B1III",
+    "app_mag": 0.61,
+    "mass_msun": 9.0
+  },
+  "Altair": {
+    "constellation": "Aquila",
+    "distance_ly": 16.7,
+    "spectral_type": "A7V",
+    "app_mag": 0.76,
+    "mass_msun": 1.8
+  },
+  "Acrux": {
+    "constellation": "Crux",
+    "distance_ly": 321,
+    "spectral_type": "B0.5IV",
+    "app_mag": 0.77,
+    "mass_msun": 16.0
+  },
+  "Aldebaran": {
+    "constellation": "Taurus",
+    "distance_ly": 65,
+    "spectral_type": "K5III",
+    "app_mag": 0.87,
+    "mass_msun": 1.7
+  },
+  "Antares": {
+    "constellation": "Scorpius",
+    "distance_ly": 550,
+    "spectral_type": "M1.5Iab–b",
+    "app_mag": 0.96,
+    "mass_msun": 12.0
+  },
+  "Spica": {
+    "constellation": "Virgo",
+    "distance_ly": 250,
+    "spectral_type": "B1V",
+    "app_mag": 0.98,
+    "mass_msun": 11.0
+  },
+  "Pollux": {
+    "constellation": "Gemini",
+    "distance_ly": 34.0,
+    "spectral_type": "K0III",
+    "app_mag": 1.14,
+    "mass_msun": 1.9
+  },
+  "Fomalhaut": {
+    "constellation": "Piscis Austrinus",
+    "distance_ly": 25.1,
+    "spectral_type": "A3V",
+    "app_mag": 1.16,
+    "mass_msun": 1.9
+  },
+  "Deneb": {
+    "constellation": "Cygnus",
+    "distance_ly": 1469,
+    "spectral_type": "A2Ia",
+    "app_mag": 1.25,
+    "mass_msun": 19.0
+  },
+  "Regulus": {
+    "constellation": "Leo",
+    "distance_ly": 77,
+    "spectral_type": "B7V",
+    "app_mag": 1.36,
+    "mass_msun": 3.8
+  },
+  "Adhara": {
+    "constellation": "Canis Major",
+    "distance_ly": 430,
+    "spectral_type": "B2II",
+    "app_mag": 1.50,
+    "mass_msun": 9.0
+  }
+}
+

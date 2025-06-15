@@ -1,0 +1,233 @@
+{
+  "Proxima Centauri b": {
+    "mass_earths": 1.27,
+    "distance_ly": 4.24,
+    "magnitude": 11.13,
+    "type": "terrestrial",
+    "host_star": "Proxima Centauri",
+    "star_type": "M5.5V",
+    "ra": "14h29m42.9487s",
+    "dec": "-62d40m46.141s"
+  },
+  "Proxima Centauri c": {
+    "mass_earths": 7,
+    "distance_ly": 4.24,
+    "magnitude": null,
+    "type": "sub-Neptune",
+    "host_star": "Proxima Centauri",
+    "star_type": "M5.5V",
+    "ra": "14h29m42.9487s",
+    "dec": "-62d40m46.141s"
+  },
+  "Proxima Centauri d": {
+    "mass_earths": 0.26,
+    "distance_ly": 4.24,
+    "magnitude": null,
+    "type": "sub-Earth",
+    "host_star": "Proxima Centauri",
+    "star_type": "M5.5V",
+    "ra": "14h29m42.9487s",
+    "dec": "-62d40m46.141s"
+  },
+  "Barnard's Star b": {
+    "mass_earths": 0.3,
+    "distance_ly": 5.96,
+    "magnitude": 9.54,
+    "type": "sub-Earth",
+    "host_star": "Barnard's Star",
+    "star_type": "M4V",
+    "ra": "17h57m48.49803s",
+    "dec": "+04d41m36.2072s"
+  },
+  "Ross 128 b": {
+    "mass_earths": 1.4,
+    "distance_ly": 11.03,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "Ross 128",
+    "star_type": "M4V",
+    "ra": "11h47m44.391s",
+    "dec": "-00d48m16.78s"
+  },
+  "Luyten b": {
+    "mass_earths": 2.89,
+    "distance_ly": 12.2,
+    "magnitude": 9.87,
+    "type": "super-Earth",
+    "host_star": "Luyten's Star",
+    "star_type": "M3.5V",
+    "ra": "07h27m24.4999s",
+    "dec": "+05d13m32.313s"
+  },
+  "Teegarden's Star b": {
+    "mass_earths": 1.05,
+    "distance_ly": 12.5,
+    "magnitude": null,
+    "type": "terrestrial",
+    "host_star": "Teegarden's Star",
+    "star_type": "M7V",
+    "ra": "02h53m00.848s",
+    "dec": "+16d52m53.47s"
+  },
+  "Gliese 1002 b": {
+    "mass_earths": 1.08,
+    "distance_ly": 15.8,
+    "magnitude": null,
+    "type": "terrestrial",
+    "host_star": "Gliese 1002",
+    "star_type": "M5.5V",
+    "ra": "01h35m54.676s",
+    "dec": "-12d44m34.03s"
+  },
+  "Gliese 876 d": {
+    "mass_earths": 6.8,
+    "distance_ly": 15.0,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "Gliese 876",
+    "star_type": "M5V",
+    "ra": "22h53m16.710s",
+    "dec": "-14d15m49.26s"
+  },
+  "Wolf 1061 b": {
+    "mass_earths": 1.36,
+    "distance_ly": 13.8,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "Wolf 1061",
+    "star_type": "M3V",
+    "ra": "16h30m18.106s",
+    "dec": "-12d39m45.3s"
+  },
+  "Wolf 1061 c": {
+    "mass_earths": 4.3,
+    "distance_ly": 13.8,
+    "magnitude": 10.07,
+    "type": "super-Earth",
+    "host_star": "Wolf 1061",
+    "star_type": "M3V",
+    "ra": "16h30m18.106s",
+    "dec": "-12d39m45.3s"
+  },
+  "Wolf 1061 d": {
+    "mass_earths": 5.21,
+    "distance_ly": 13.8,
+    "magnitude": null,
+    "type": "mini-Neptune",
+    "host_star": "Wolf 1061",
+    "star_type": "M3V",
+    "ra": "16h30m18.106s",
+    "dec": "-12d39m45.3s"
+  },
+  "Kepler-186 f": {
+    "mass_earths": 1.17,
+    "distance_ly": 165,
+    "magnitude": null,
+    "type": "terrestrial",
+    "host_star": "Kepler-186",
+    "star_type": "M1V",
+    "ra": "19h54m36.519s",
+    "dec": "+43d57m18.26s"
+  },
+  "Kapteyn b": {
+    "mass_earths": 4.8,
+    "distance_ly": 12.8,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "Kapteyn's Star",
+    "star_type": "M1.5V",
+    "ra": "05h19m49.610s",
+    "dec": "-45d46m44.47s"
+  },
+  "GJ 273 b": {
+    "mass_earths": 1.18,
+    "distance_ly": 12.2,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "Luyten's Star",
+    "star_type": "M3.5V",
+    "ra": "07h27m24.4999s",
+    "dec": "+05d13m32.313s"
+  },
+  "Teegarden's Star c": {
+    "mass_earths": 1.05,
+    "distance_ly": 12.5,
+    "magnitude": null,
+    "type": "terrestrial",
+    "host_star": "Teegarden's Star",
+    "star_type": "M7V",
+    "ra": "02h53m00.848s",
+    "dec": "+16d52m53.47s"
+  },
+  "Ross 128 c": {
+    "mass_earths": 4.6,
+    "distance_ly": 11.0,
+    "magnitude": null,
+    "type": "mini-Neptune",
+    "host_star": "Ross 128",
+    "star_type": "M4V",
+    "ra": "11h47m44.391s",
+    "dec": "-00d48m16.78s"
+  },
+  "GJ 3323 b": {
+    "mass_earths": 2.02,
+    "distance_ly": 16.1,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "GJ 3323",
+    "star_type": "M3.5V",
+    "ra": "10h01m30.815s",
+    "dec": "-17d11m33.09s"
+  },
+  "GJ 3138 b": {
+    "mass_earths": 1.17,
+    "distance_ly": 14.9,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "GJ 3138",
+    "star_type": "M5V",
+    "ra": "13h22m50.880s",
+    "dec": "-05d45m03.33s"
+  },
+  "GJ 628 b": {
+    "mass_earths": 2.18,
+    "distance_ly": 16.1,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "GJ 628",
+    "star_type": "M3.5V",
+    "ra": "16h31m23.147s",
+    "dec": "-09d29m34.68s"
+  },
+  "GJ 628 c": {
+    "mass_earths": 3.16,
+    "distance_ly": 16.1,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "GJ 628",
+    "star_type": "M3.5V",
+    "ra": "16h31m23.147s",
+    "dec": "-09d29m34.68s"
+  },
+  "GJ 628 d": {
+    "mass_earths": 6.3,
+    "distance_ly": 16.1,
+    "magnitude": null,
+    "type": "mini-Neptune",
+    "host_star": "GJ 628",
+    "star_type": "M3.5V",
+    "ra": "16h31m23.147s",
+    "dec": "-09d29m34.68s"
+  },
+  "GJ 273 c": {
+    "mass_earths": 2.17,
+    "distance_ly": 12.2,
+    "magnitude": null,
+    "type": "super-Earth",
+    "host_star": "Luyten's Star",
+    "star_type": "M3.5V",
+    "ra": "07h27m24.4999s",
+    "dec": "+05d13m32.313s"
+  }
+}
+

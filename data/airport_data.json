@@ -1,0 +1,131 @@
+{
+  "KSLC": {
+    "name": "Salt Lake City International Airport",
+    "location": "Salt Lake City, UT",
+    "latitude": 40.7861,
+    "longitude": -111.9822,
+    "distance_from_KSLC_miles": 0.0,
+    "direction_from_KSLC_degrees": 0.0
+  },
+  "KOGD": {
+    "name": "Ogden\u2013Hinckley Airport",
+    "location": "Ogden, UT",
+    "latitude": 41.195,
+    "longitude": -112.016,
+    "distance_from_KSLC_miles": 28.3,
+    "direction_from_KSLC_degrees": 356.4
+  },
+  "KPVU": {
+    "name": "Provo Municipal Airport (Provo, Utah)",
+    "location": "Provo, UT",
+    "latitude": 40.2208,
+    "longitude": -111.7233,
+    "distance_from_KSLC_miles": 41.4,
+    "direction_from_KSLC_degrees": 160.7
+  },
+  "KVEL": {
+    "name": "Vernal Regional Airport",
+    "location": "Vernal, UT",
+    "latitude": 40.4409,
+    "longitude": -109.5102,
+    "distance_from_KSLC_miles": 131.8,
+    "direction_from_KSLC_degrees": 99.6
+  },
+  "KPIH": {
+    "name": "Pocatello Regional Airport",
+    "location": "Pocatello, ID",
+    "latitude": 42.9098,
+    "longitude": -112.5966,
+    "distance_from_KSLC_miles": 150.1,
+    "direction_from_KSLC_degrees": 348.0
+  },
+  "KRKS": {
+    "name": "Rock Springs\u2013Sweetwater County Airport",
+    "location": "Rock Springs, WY",
+    "latitude": 41.5942,
+    "longitude": -109.065,
+    "distance_from_KSLC_miles": 161.6,
+    "direction_from_KSLC_degrees": 68.8
+  },
+  "KTWF": {
+    "name": "Magic Valley Regional Airport",
+    "location": "Twin Falls, ID",
+    "latitude": 42.4817,
+    "longitude": -114.4878,
+    "distance_from_KSLC_miles": 174.5,
+    "direction_from_KSLC_degrees": 313.0
+  },
+  "KCNY": {
+    "name": "Canyonlands Field",
+    "location": "Moab, UT",
+    "latitude": 38.755,
+    "longitude": -109.754,
+    "distance_from_KSLC_miles": 183.6,
+    "direction_from_KSLC_degrees": 139.1
+  },
+  "KIDA": {
+    "name": "Idaho Falls Regional Airport",
+    "location": "Idaho Falls, ID",
+    "latitude": 43.5146,
+    "longitude": -112.0708,
+    "distance_from_KSLC_miles": 188.6,
+    "direction_from_KSLC_degrees": 358.7
+  },
+  "KEKO": {
+    "name": "Elko Regional Airport",
+    "location": "Elko, NV",
+    "latitude": 40.8249,
+    "longitude": -115.792,
+    "distance_from_KSLC_miles": 199.3,
+    "direction_from_KSLC_degrees": 272.0
+  },
+  "KRXE": {
+    "name": "Rexburg\u2013Madison County Airport",
+    "location": "Rexburg, ID",
+    "latitude": 43.8339,
+    "longitude": -111.805,
+    "distance_from_KSLC_miles": 210.8,
+    "direction_from_KSLC_degrees": 2.4
+  },
+  "KBTM": {
+    "name": "Bert Mooney Airport",
+    "location": "Butte, MT",
+    "latitude": 45.9548,
+    "longitude": -112.4976,
+    "distance_from_KSLC_miles": 358.1,
+    "direction_from_KSLC_degrees": 356.0
+  },
+  "KLAS": {
+    "name": "Harry Reid International Airport",
+    "location": "Las Vegas, NV",
+    "latitude": 36.084,
+    "longitude": -115.1537,
+    "distance_from_KSLC_miles": 367.4,
+    "direction_from_KSLC_degrees": 208.8
+  },
+  "KHLN": {
+    "name": "Helena Regional Airport",
+    "location": "Helena, MT",
+    "latitude": 46.6101,
+    "longitude": -111.9891,
+    "distance_from_KSLC_miles": 402.4,
+    "direction_from_KSLC_degrees": 360.0
+  },
+  "KRNO": {
+    "name": "Reno\u2013Tahoe International Airport",
+    "location": "Reno, NV",
+    "latitude": 39.4991,
+    "longitude": -119.7681,
+    "distance_from_KSLC_miles": 420.6,
+    "direction_from_KSLC_degrees": 260.3
+  },
+  "KMSO": {
+    "name": "Missoula Montana Airport",
+    "location": "Missoula, MT",
+    "latitude": 46.9164,
+    "longitude": -114.0906,
+    "distance_from_KSLC_miles": 436.4,
+    "direction_from_KSLC_degrees": 346.8
+  }
+}
+
