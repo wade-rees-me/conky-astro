@@ -37,19 +37,12 @@ def get_line(offset, col1, col2, col3):
 def get_definitions(toggle):
     try:
         if toggle:
-            if "CONKY_HOME" not in os.environ:
-                raise EnvironmentError("CONKY_HOME environment variable is not set.")
-
-            FILE_NAME = os.path.join(
-                os.environ["CONKY_HOME"], "data", "definitions.json"
-            )
-
-            with open(FILE_NAME, "r", encoding="utf-8") as f:
+            with open(striker.FILE_DEFINITION_DATA, "r", encoding="utf-8") as f:
                 definitions = json.load(f)
 
             result = ""
             for key, value in definitions.items():
-                lines = striker.wrap_text(value, 90)
+                lines = striker.wrap_text(value, 100)
                 for line in lines:
                     result += striker.get_line_align_left2(key, line) + "\n"
                     # print(f"${{goto 30}}${{alignc}}${{font4}}${{color red}}{line}")
@@ -114,9 +107,13 @@ def get_definitions(toggle):
 
             return result
     except FileNotFoundError:
-        raise exception.StrikerException(f"File not found: {FILE_NAME}")
+        raise exception.StrikerException(
+            f"File not found: {striker.FILE_DEFINITION_DATA}"
+        )
     except PermissionError:
-        raise exception.StrikerException(f"Permission denied: {FILE_NAME}")
+        raise exception.StrikerException(
+            f"Permission denied: {striker.FILE_DEFINITION_DATA}"
+        )
     except Exception as e:
         raise exception.StrikerException(f"Unexpected error: {e}")
 

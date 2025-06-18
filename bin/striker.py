@@ -35,13 +35,14 @@ LON = "-122"
 #
 DIRECTORY_DATA = os.path.join(os.environ["CONKY_HOME"], "conky-python", "data")
 DIRECTORY_CACHE = os.path.join(os.environ["CONKY_HOME"], "conky-python", "cache")
-FILE_AIRPORT_DATA = os.path.join(DIRECTORY_DATA, "airport_data.json")
-FILE_DEFINITION_TOGGLE = os.path.join(DIRECTORY_CACHE, "definition_toggle.txt")
-FILE_EXOPLANET_DATA = os.path.join(DIRECTORY_DATA, "exoplanet_data.json")
-FILE_EXOPLANET_TOGGLE = os.path.join(DIRECTORY_CACHE, "exoplanet_toggle.txt")
-FILE_PLANET_DATA = os.path.join(DIRECTORY_DATA, "planet_data.json")
-FILE_STAR_DATA = os.path.join(DIRECTORY_DATA, "star_data.json")
-FILE_STAR_TOGGLE = os.path.join(DIRECTORY_CACHE, "star_toggle.txt")
+FILE_AIRPORT_DATA = os.path.join(DIRECTORY_DATA, "airport-data.json")
+FILE_DEFINITION_DATA = os.path.join(DIRECTORY_DATA, "definitions.json")
+FILE_DEFINITION_TOGGLE = os.path.join(DIRECTORY_CACHE, "definition-toggle.txt")
+FILE_EXOPLANET_DATA = os.path.join(DIRECTORY_DATA, "exoplanet-data.json")
+FILE_EXOPLANET_TOGGLE = os.path.join(DIRECTORY_CACHE, "exoplanet-toggle.txt")
+FILE_PLANET_DATA = os.path.join(DIRECTORY_DATA, "planet-data.json")
+FILE_STAR_DATA = os.path.join(DIRECTORY_DATA, "star-data.json")
+FILE_STAR_TOGGLE = os.path.join(DIRECTORY_CACHE, "star-toggle.txt")
 OPENWEATHER_API_KEY = "79764014333bc411583aa941ea6817ba"
 
 

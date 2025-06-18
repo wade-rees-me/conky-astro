@@ -36,13 +36,13 @@ def get_planets():
 
         if planet_name == "Earth":
             line = (
-                f"${{goto 40}}${{color cyan}}{planet_name}${{alignr}}${{color {color}}}| {radius_miles:6,.0f} mi | {temp_f:+5.0f}°F | {magnitude:+06.2f}"
-                f"| {planet_type:<14} | ---- | ---- | ------------ | {mass:>6.2f} Me"
+                f"${{goto 40}}${{color cyan}}{planet_name}${{alignr}}${{color {color}}}| {radius_miles:>10,.0f} mi | {temp_f:>+8.0f}°F | {magnitude:+06.2f}"
+                f" | {planet_type:<14} | ---- | ---- | ------------ | {mass:>6.2f} Me"
             )
         else:
             line = (
-                f"${{goto 40}}${{color cyan}}{planet_name}${{alignr}}${{color {color}}}| {radius_miles:6,.0f} mi | {temp_f:+5.0f}°F | {magnitude:+06.2f}"
-                f"| {planet_type:<14} | {az:03.0f}° | {alt:+03.0f}° | {distance:>9,.2f} AU | {mass:>6.2f} Me"
+                f"${{goto 40}}${{color cyan}}{planet_name}${{alignr}}${{color {color}}}| {radius_miles:>10,.0f} mi | {temp_f:>+8.0f}°F | {magnitude:+06.2f}"
+                f" | {planet_type:<14} | {az:03.0f}° | {alt:+03.0f}° | {distance:>9,.2f} AU | {mass:>6.2f} Me"
             )
         lines.append(line)
 
@@ -55,10 +55,10 @@ def get_planets():
 if __name__ == "__main__":
     print(striker.get_section_title("Planets", ""))
     print(
-        f"${{color yellow}}${{goto 30}}Planet${{alignr}}| Radius    | Temp    | Mag    | World Type     | Az   | Alt  | Distance     | Mass     "
+        f"${{color yellow}}${{goto 30}}Planet${{alignr}}| Radius        | Temp       | Mag    | World Type     | Az   | Alt  | Distance     | Mass     "
     )
     print(f"${{goto 30}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
     try:
-        print(get_planets())
+        print(get_planets() + f"\n")
     except exception.StrikerException as e:
         print(exception.StrikerException.get_message(e))

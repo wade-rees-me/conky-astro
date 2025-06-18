@@ -52,7 +52,7 @@ def get_stars():
         return
     index %= total
     rotated = star_items[index:] + star_items[:index]
-    selected = rotated[:6]
+    selected = rotated[:9]
 
     # Save updated index for next run
     next_index = (index + 1) % total
@@ -73,8 +73,8 @@ def get_stars():
         color = "green" if alt > 0 else "lightgray"
 
         line = (
-            f"${{goto 40}}${{font}}${{color cyan}}{star_name}${{alignr}}| {constellation:<13} | "
-            f"${{color {spt_info['color_code']}}}{spt_info['color']:<13}${{color {color}}}| "
+            f"${{goto 40}}${{font}}${{color cyan}}{star_name}${{alignr}}| {constellation:<19} | "
+            f"${{color {spt_info['color_code']}}}{spt_info['color']:<14}${{color {color}}}| "
             f"{spt_info['type']}-{spt_info['size']:<3} | {mag:+06.2f} | {az:03.0f}° | {alt:+03.0f}° | "
             f"{distance:9,.1f} ly | {mass:>6.2f} MS"
         )
@@ -89,7 +89,7 @@ def get_stars():
 if __name__ == "__main__":
     print(striker.get_section_title("Stars", ""))
     print(
-        f"${{color yellow}}${{goto 30}}Star${{alignr}}| Constellation | Temperature  | SpT   | Mag    | Az   | Alt  | Distance     | Mass     "
+        f"${{color yellow}}${{goto 30}}Star${{alignr}}| Constellation       | Temperature   | SpT   | Mag    | Az   | Alt  | Distance     | Mass     "
     )
     print(f"${{goto 30}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
     try:

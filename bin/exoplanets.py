@@ -9,7 +9,7 @@ import json
 import striker
 import exception
 
-DISPLAY_COUNT = 6
+DISPLAY_COUNT = 9
 
 
 #
@@ -64,7 +64,7 @@ def get_exoplanets():
 
         line = (
             f"${{goto 40}}${{color cyan}}{exoplanet}${{alignr}}"
-            f"${{color {color}}}| {host_star:<19} | {spt_info['type']}-{spt_info['size']:<3} | {exo_type:<14} | "
+            f"${{color {color}}}| {host_star:<26} | {spt_info['type']}-{spt_info['size']:<4} | {exo_type:<14} | "
             f"{altaz.az.value:03.0f}° | {altaz.alt.value:+03.0f}° | "
             f"{distance:>9,.2f} ly | {mass:>6.2f} Me"
         )
@@ -77,9 +77,10 @@ def get_exoplanets():
 #
 #
 if __name__ == "__main__":
-    print(striker.get_section_title("Exoplanets", ""))
+    # print(striker.get_section_title("Exoplanets", ""))
+    # print(f"\n")
     print(
-        f"${{color yellow}}${{goto 30}}Exoplanet${{alignr}}| Host star           | SpT   | World Type     | Az   | Alt  | Distance     | Mass     "
+        f"${{color yellow}}${{goto 30}}Exoplanet${{alignr}}| Host star                  | SpT    | World Type     | Az   | Alt  | Distance     | Mass     "
     )
     print(f"${{goto 30}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
     try:
