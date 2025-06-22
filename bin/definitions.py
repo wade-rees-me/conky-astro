@@ -28,7 +28,14 @@ def get_toggle_suffix():
 #
 #
 def get_line(offset, col1, col2, col3):
-    return f"${{goto {offset + 30}}}{col1}${{goto {offset + 120}}}{col2}${{goto {offset + 260}}}{col3}"
+    return f"${{goto {offset + 10}}}{col1}${{goto {offset + 120}}}{col2}${{goto {offset + 260}}}{col3}"
+
+
+#
+#
+#
+def get_line5(color, col1, col2, col3, col4, col5):
+    return f"${{goto 20}}${{color {color}}}{col1:<16}{col2:<20}{col3:<12}${{color white}}                  | {col4:<20}{col5:<30}\n"
 
 
 #
@@ -42,69 +49,79 @@ def get_definitions(toggle):
 
             result = ""
             for key, value in definitions.items():
-                lines = striker.wrap_text(value, 100)
+                lines = striker.wrap_text(value, 120)
                 for line in lines:
                     result += striker.get_line_align_left2(key, line) + "\n"
-                    # print(f"${{goto 30}}${{alignc}}${{font4}}${{color red}}{line}")
+                    # print(f"${{goto 10}}${{alignc}}${{font4}}${{color red}}{line}")
 
             return result
         else:
             result = ""
-            result += get_line(30, "", "Spectral Types", "")
-            result += get_line(400, "", "Luminosity Classes", "") + f"\n"
-
-            result += get_line(30, "Type", "Temp (K)", "Color")
-            result += get_line(400, "Class", "Symbol", "Description") + f"\n"
-            result += f"${{goto 30}}${{color gray}}${{hr 1}}" + f"\n"
-
-            result += f"${{color blue}}" + get_line(30, "0", "> 30,000", "Blue")
-            result += (
-                f"${{color white}}" + get_line(400, "I", "I", "Supergiant") + f"\n"
+            result += get_line5(
+                "Yellow",
+                "Spectral Type",
+                "Temperature (K)",
+                "Color",
+                "Luminosity Class",
+                "Description",
             )
-
-            result += f"${{color #aabfff}}" + get_line(
-                30, "B", "10,000 - 30,000", "Blue-white"
+            result += f"${{goto 10}}${{color gray}}${{hr 1}}\n"
+            result += get_line5(
+                "Blue",
+                "O",
+                "> 30,000",
+                "Blue",
+                "I",
+                "Supergiant",
             )
-
-            result += (
-                f"${{color white}}" + get_line(400, "II", "II", "Bright Giant") + f"\n"
+            result += get_line5(
+                "#aabfff",
+                "B",
+                "  10,000 - 30,000",
+                "Blue-white",
+                "II",
+                "Bright giant",
             )
-
-            result += f"${{color white}}" + get_line(
-                30, "A", " 7,500 - 10,000", "White"
+            result += get_line5(
+                "White",
+                "A",
+                "   7,500 - 10,000",
+                "White",
+                "III",
+                "Giant",
             )
-            result += f"${{color white}}" + get_line(400, "III", "III", "Giant") + f"\n"
-
-            result += f"${{color #ffffe0}}" + get_line(
-                30, "F", " 6,000 -  7,500", "Yellow-white"
+            result += get_line5(
+                "#ffffe0",
+                "F",
+                "   6,000 -  7,500",
+                "Yellow-White",
+                "IV",
+                "Sub-giant",
             )
-            result += (
-                f"${{color white}}" + get_line(400, "IV", "IV", "Sub-giant") + f"\n"
+            result += get_line5(
+                "Yellow",
+                "G",
+                "   5,200 -  6,000",
+                "Yellow",
+                "V",
+                "Main Sequence (Dwarf)",
             )
-
-            result += f"${{color yellow}}" + get_line(
-                30, "G", " 5,200 -  6,000", "Yellow"
+            result += get_line5(
+                "Orange",
+                "K",
+                "   3,700 -  5,200",
+                "Orange",
+                "VI",
+                "Sub-dwarf",
             )
-            result += (
-                f"${{color white}}"
-                + get_line(400, "V", "V", "Main Sequence (Dwarf)")
-                + f"\n"
+            result += get_line5(
+                "Red",
+                "M",
+                "<  3,700",
+                "Red",
+                "VII",
+                "White-dwarf (Dead core)",
             )
-
-            result += f"${{color orange}}" + get_line(
-                30, "K", " 3,700 -  5,200", "Orange"
-            )
-            result += (
-                f"${{color white}}" + get_line(400, "VI", "VI", "Sub-dwarf") + f"\n"
-            )
-
-            result += f"${{color red}}" + get_line(30, "M", "< 3,700 ", "Red")
-            result += (
-                f"${{color white}}"
-                + get_line(400, "D", "D", "White-dwarf (Dead core)")
-                + f"\n"
-            )
-
             return result
     except FileNotFoundError:
         raise exception.StrikerException(

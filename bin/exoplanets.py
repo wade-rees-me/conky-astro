@@ -1,20 +1,17 @@
 #!/usr/bin/env python3
 
-from astropy.coordinates import get_body, SkyCoord, AltAz, EarthLocation
+from astropy.coordinates import SkyCoord, AltAz
 from astropy.time import Time
-from datetime import datetime
 from astropy import units as u
+from datetime import datetime, timedelta
 import os
 import json
 import striker
 import exception
 
-DISPLAY_COUNT = 9
+DISPLAY_COUNT = 8
 
 
-#
-#
-#
 def get_rotation_index(total):
     """Read the rotation index from file, increment, and return it."""
     try:
@@ -24,65 +21,69 @@ def get_rotation_index(total):
         index = 0
 
     new_index = (index + 1) % total
-
     with open(striker.FILE_EXOPLANET_TOGGLE, "w") as f:
         f.write(str(new_index))
-
     return index
 
 
-#
-#
 def get_exoplanets():
+    today = datetime.utcnow().date()
     obstime = Time.now()
-    altaz_frame = AltAz(obstime=obstime, location=striker.herriman)
-
+    altaz_frame = AltAz(obstime=obstime, location=striker.UTAH_HERRIMAN)
     exoplanet_data = striker.load_json(striker.FILE_EXOPLANET_DATA)
     exoplanets = list(exoplanet_data.items())
     total = len(exoplanets)
 
-    # Get current rotation index
+    # Rotation index for display paging
     start_index = get_rotation_index(total)
-    rotated = exoplanets[start_index:] + exoplanets[:start_index]
-    visible = rotated[:DISPLAY_COUNT]
+    visible = exoplanets[start_index:] + exoplanets[:start_index]
+    visible = visible[:DISPLAY_COUNT]
 
     lines = []
-
     for exoplanet, data in visible:
-        mass = data["mass_earths"]
-        distance = data["distance_ly"]
-        ra_str = data["ra"]
-        dec_str = data["dec"]
-        exo_type = data["type"]
-        host_star = data["host_star"]
-        star_type = data["star_type"]
-        spt_info = striker.parse_spectral_type(star_type)
+        try:
+            mass = data.get("mass_earth", 0)
+            distance = data.get("star_distance_ly", 0)
+            world_type = data.get("world_type", "")
+            exo_type = data.get("type", "")
+            host_star = data.get("host_star", "")
+            star_type = data.get("star_spectral_type", "")
+            spt_info = striker.parse_spectral_type(star_type)
 
-        coord = SkyCoord(ra=ra_str, dec=dec_str, frame="icrs")
-        altaz = coord.transform_to(altaz_frame)
-        color = "green" if altaz.alt > 0 else "lightgray"
+            obs = next(
+                (o for o in data["observations"] if o["date"] == today.isoformat()),
+                None,
+            )
+            color = "lightgray"
+            if obs:
+                az = obs["azimuth_deg"]
+                alt = obs["altitude_deg"]
+                color = "green" if alt > 0 else "lightgray"
+            else:
+                az = "---"
+                alt = "---"
 
-        line = (
-            f"${{goto 40}}${{color cyan}}{exoplanet}${{alignr}}"
-            f"${{color {color}}}| {host_star:<26} | {spt_info['type']}-{spt_info['size']:<4} | {exo_type:<14} | "
-            f"{altaz.az.value:03.0f}° | {altaz.alt.value:+03.0f}° | "
-            f"{distance:>9,.2f} ly | {mass:>6.2f} Me"
-        )
-        lines.append(line)
+            line = (
+                f"${{goto 20}}${{color cyan}}{exoplanet[:18]}${{alignr}}"
+                f"${{color {color}}}| {host_star[:18]:<18} | "
+                f"${{color {spt_info['color_code']}}}{spt_info['color']:<13} | "
+                f"{spt_info['size']:<13}${{color {color}}} | {world_type:<13}"
+                f"${{color {color}}} | "
+                f"{az:03.0f}° | {alt:+03.0f}° | "
+                f"{distance:>9,.2f} ly | {mass:>7.2f} Me"
+            )
+            lines.append(line)
+        except Exception as e:
+            lines.append(f"${{goto 20}}${{color red}}Error: {exoplanet} – {str(e)}")
 
     return "\n".join(lines)
 
 
-#
-#
-#
 if __name__ == "__main__":
-    # print(striker.get_section_title("Exoplanets", ""))
-    # print(f"\n")
     print(
-        f"${{color yellow}}${{goto 30}}Exoplanet${{alignr}}| Host star                  | SpT    | World Type     | Az   | Alt  | Distance     | Mass     "
+        f"${{color yellow}}${{goto 20}}Exoplanet${{alignr}}| Host star          | Temperature   | Star type     | World Type    | Az   | Alt  | Distance     | Mass      "
     )
-    print(f"${{goto 30}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
+    print(f"${{goto 10}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
     try:
         print(get_exoplanets())
     except exception.StrikerException as e:

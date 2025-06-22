@@ -44,11 +44,11 @@ def conky_cpu_usage():
 
     lines = []
     lines.append(
-        f"${{font}}${{goto 30}}${{color cyan}}Frequency: ${{alignr}}${{color white}}Min: {cpu_freq.min:.0f} MHz | "
+        f"${{font}}${{goto 20}}${{color cyan}}Frequency: ${{alignr}}${{color white}}Min: {cpu_freq.min:.0f} MHz | "
         f"Max: {cpu_freq.max:.0f} MHz | Current: {cpu_freq.current:.0f} MHz"
     )
     lines.append(
-        f"${{goto 30}}${{color cyan}}Cores: (temperatures in °C)${{alignr}}${{color white}}Physical: {cpu_count_physical} (0-23)"
+        f"${{goto 20}}${{color cyan}}Cores: (temperatures in °C)${{alignr}}${{color white}}Physical: {cpu_count_physical} (0-23)"
         f"| Logical: {cpu_count_logical} | Usage: {cpu_usage:.0f}% | ${{color}}Temperature: {overall_temp:.0f}°C${{voffset 6}}"
     )
 
@@ -64,7 +64,7 @@ def conky_cpu_usage():
                 temp_display = f"${{color {t_color}}}{temp:2.0f}°"
             else:
                 temp_display = "${color grey}---"
-            output += f"${{color {color}}}{usage:>6.0f}%/{temp_display}"
+            output += f"${{color {color}}}{usage:>7.0f}%/{temp_display}"
         lines.append(output)
 
     return "\n".join(lines)

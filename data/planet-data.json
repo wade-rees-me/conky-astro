@@ -1,75 +1,107 @@
 {
-  "Mercury": {
+  "mercury": {
     "mass_kg": 3.3011e23,
     "mass_earths": 0.0553,
     "distance_au": 0.61,
     "magnitude": -1.9,
     "avg_temp_k": 440,
     "radius_km": 2439.7,
-    "type": "Terrestrial"
+    "type": "Terrestrial",
+    "rotation_period_hours": 1407.6,
+    "surface_pressure_bar": 0,
+    "atmosphere_composition": [],
+    "orbit_days": 88
   },
-  "Venus": {
+  "venus": {
     "mass_kg": 4.8675e24,
     "mass_earths": 0.815,
     "distance_au": 0.28,
     "magnitude": -4.6,
     "avg_temp_k": 737,
     "radius_km": 6051.8,
-    "type": "Terrestrial"
+    "type": "Terrestrial",
+    "rotation_period_hours": -5832.5,
+    "surface_pressure_bar": 92,
+    "atmosphere_composition": ["CO₂", "N₂", "SO₂"],
+    "orbit_days": 224.7
   },
-  "Earth": {
+  "earth": {
     "mass_kg": 5.97237e24,
     "mass_earths": 1.0,
     "distance_au": 0.0,
     "magnitude": -3.99,
     "avg_temp_k": 288,
     "radius_km": 6371.0,
-    "type": "Terrestrial"
+    "type": "Terrestrial",
+    "rotation_period_hours": 23.93,
+    "surface_pressure_bar": 1.0,
+    "atmosphere_composition": ["N₂", "O₂", "Ar", "CO₂"],
+    "orbit_days": 365.25
   },
-  "Mars": {
+  "mars": {
     "mass_kg": 6.4171e23,
     "mass_earths": 0.107,
     "distance_au": 0.52,
     "magnitude": -2.9,
     "avg_temp_k": 210,
     "radius_km": 3389.5,
-    "type": "Terrestrial"
+    "type": "Terrestrial",
+    "rotation_period_hours": 24.62,
+    "surface_pressure_bar": 0.006,
+    "atmosphere_composition": ["CO₂", "N₂", "Ar"],
+    "orbit_days": 687
   },
-  "Jupiter": {
+  "jupiter barycenter": {
     "mass_kg": 1.8982e27,
     "mass_earths": 317.8,
     "distance_au": 4.2,
     "magnitude": -2.94,
     "avg_temp_k": 120,
     "radius_km": 69911,
-    "type": "Gas Giant"
+    "type": "Gas Giant",
+    "rotation_period_hours": 9.93,
+    "surface_pressure_bar": null,
+    "atmosphere_composition": ["H₂", "He"],
+    "orbit_days": 4331
   },
-  "Saturn": {
+  "saturn barycenter": {
     "mass_kg": 5.6834e26,
     "mass_earths": 95.2,
     "distance_au": 8.58,
     "magnitude": -0.55,
     "avg_temp_k": 88,
     "radius_km": 58232,
-    "type": "Gas Giant"
+    "type": "Gas Giant",
+    "rotation_period_hours": 10.7,
+    "surface_pressure_bar": null,
+    "atmosphere_composition": ["H₂", "He"],
+    "orbit_days": 10747
   },
-  "Uranus": {
+  "uranus barycenter": {
     "mass_kg": 8.6810e25,
     "mass_earths": 14.5,
     "distance_au": 18.21,
     "magnitude": 5.32,
     "avg_temp_k": 59,
     "radius_km": 25362,
-    "type": "Ice Giant"
+    "type": "Ice Giant",
+    "rotation_period_hours": -17.24,
+    "surface_pressure_bar": null,
+    "atmosphere_composition": ["H₂", "He", "CH₄"],
+    "orbit_days": 30589
   },
-  "Neptune": {
+  "neptune barycenter": {
     "mass_kg": 1.02413e26,
     "mass_earths": 17.1,
     "distance_au": 29.09,
     "magnitude": 7.78,
     "avg_temp_k": 55,
     "radius_km": 24622,
-    "type": "Ice Giant"
+    "type": "Ice Giant",
+    "rotation_period_hours": 16.11,
+    "surface_pressure_bar": null,
+    "atmosphere_composition": ["H₂", "He", "CH₄"],
+    "orbit_days": 59800
   }
 }
 

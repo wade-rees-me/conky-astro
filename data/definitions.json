@@ -6,7 +6,7 @@
   "Latitude(Lat)": "Observer's north-south position on Earth, from –90° (South Pole) to +90° (North Pole), 0° at Equator",
   "Longitude(Lon)": "Observer's east-west position on Earth, from –180° to +180°, 0° at Prime Meridian (Greenwich, UK)",
   "Magnitude": "Apparent brightness of a star. Lower or negative numbers are brighter; higher numbers are dimmer",
-  "Star type": "Spectral class based on temperature and mass: O and B are hot, young, and massive; K and M are cooler and often older or giant stars",
-  "Pressure": "Atmospheric pressure in inches of mercury (inHg); lower values - storms, higher values - clearer weather",
+  "Spectral class(SpT)": "Temperature and mass: O and B are hot, young, massive; K and M are cooler, older, giant stars",
+  "Pressure": "Atmospheric pressure, inches of mercury (inHg); lower values - storms, higher values - clearer weather",
   "inHg": "Inches of Mercury, a unit of atmospheric pressure (standard sea level is ~29.92 inHg)"
 }

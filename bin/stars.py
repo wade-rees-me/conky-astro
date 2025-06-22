@@ -28,7 +28,7 @@ def get_star_data(star_name):
     dec = result["dec"][0]
     sp_type = result["sp_type"][0]
     coord = SkyCoord(ra, dec, unit=(u.hourangle, u.deg))
-    altaz = coord.transform_to(AltAz(obstime=time, location=striker.herriman))
+    altaz = coord.transform_to(AltAz(obstime=time, location=striker.UTAH_HERRIMAN))
     return coord.ra.deg, coord.dec.deg, altaz.alt.deg, altaz.az.deg, sp_type
 
 
@@ -52,7 +52,7 @@ def get_stars():
         return
     index %= total
     rotated = star_items[index:] + star_items[:index]
-    selected = rotated[:9]
+    selected = rotated[:8]
 
     # Save updated index for next run
     next_index = (index + 1) % total
@@ -69,14 +69,16 @@ def get_stars():
 
         ra, dec, alt, az, sp_type = get_star_data(star_name)
         constellation = details.get("constellation", "Unknown")
+        meaning = details.get("meaning", "Unknown")
         distance = details.get("distance_ly", 0)
         color = "green" if alt > 0 else "lightgray"
 
         line = (
-            f"${{goto 40}}${{font}}${{color cyan}}{star_name}${{alignr}}| {constellation:<19} | "
-            f"${{color {spt_info['color_code']}}}{spt_info['color']:<14}${{color {color}}}| "
-            f"{spt_info['type']}-{spt_info['size']:<3} | {mag:+06.2f} | {az:03.0f}° | {alt:+03.0f}° | "
-            f"{distance:9,.1f} ly | {mass:>6.2f} MS"
+            f"${{goto 20}}${{font}}${{color cyan}}{star_name}${{alignr}}| {constellation:<15} | {meaning:<16} | "
+            f"${{color {spt_info['color_code']}}}{spt_info['color']:<13} | "
+            f"{spt_info['size']:<13}"
+            f"${{color {color}}} | {az:03.0f}° | {alt:+03.0f}° | "
+            f"{distance:9,.1f} ly | {mass:>7.2f} MS"
         )
         lines.append(line)
 
@@ -89,9 +91,9 @@ def get_stars():
 if __name__ == "__main__":
     print(striker.get_section_title("Stars", ""))
     print(
-        f"${{color yellow}}${{goto 30}}Star${{alignr}}| Constellation       | Temperature   | SpT   | Mag    | Az   | Alt  | Distance     | Mass     "
+        f"${{color yellow}}${{goto 20}}Star${{alignr}}| Constellation   | Meaning          | Temperature   | Star type     | Az   | Alt  | Distance     | Mass      "
     )
-    print(f"${{goto 30}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
+    print(f"${{goto 10}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
     try:
         print(get_stars())
     except exception.StrikerException as e:

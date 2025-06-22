@@ -17,33 +17,44 @@ CONVERT_GB = 1024**3
 LOCAL_IP = "192.168.0.201"
 NORD_VPN_IP = "86.38.51.194"
 
-#
-herriman = EarthLocation(lat=40.5144 * u.deg, lon=-112.0325 * u.deg, height=1544 * u.m)
-location = EarthLocation(lat=40.5144 * u.deg, lon=-112.0325 * u.deg, height=1544 * u.m)
-
 # Load environment variables
-IP_GEO_LOCATION_KEY = os.getenv("IP_GEO_LOCATION_KEY")
-KSLC_LATITUDE = os.getenv("KSLC_LATITUDE")
-KSLC_LONGITUDE = os.getenv("KSLC_LONGITUDE")
+CONKY_HOME = os.environ.get("CONKY_HOME", "/home/wade/Conky")
+KEY_OPEN_WEATHER_API = os.getenv("KEY_OPEN_WEATHER_API")
 
-API_KEY = "143feb9467a64e01aff65746d10081f9"
-LAT = "37.258"
-LON = "-122"
+# Load and convert latitude and longitude from environment variables
+try:
+    KSLC_LATITUDE = float(os.getenv("KSLC_LATITUDE", "40.5144"))
+    KSLC_LONGITUDE = float(os.getenv("KSLC_LONGITUDE", "-112.0325"))
+    KSLC_EVEVATION = float(os.getenv("KSLC_EVEVATION", "1544"))
+except ValueError as e:
+    raise ValueError(f"Invalid latitude or longitude value: {e}")
+
+# Define Earth location using loaded coordinates
+UTAH_SALT_LAKE_CITY = EarthLocation(
+    lat=KSLC_LATITUDE * u.deg, lon=KSLC_LONGITUDE * u.deg, height=KSLC_EVEVATION * u.m
+)
+UTAH_HERRIMAN = EarthLocation(
+    lat=KSLC_LATITUDE * u.deg, lon=KSLC_LONGITUDE * u.deg, height=KSLC_EVEVATION * u.m
+)
+
 
 #
 # add constants
 #
-DIRECTORY_DATA = os.path.join(os.environ["CONKY_HOME"], "conky-python", "data")
-DIRECTORY_CACHE = os.path.join(os.environ["CONKY_HOME"], "conky-python", "cache")
+DIRECTORY_DATA = os.path.join(CONKY_HOME, "conky-python", "data")
+DIRECTORY_CACHE = os.path.join(CONKY_HOME, "conky-python", "cache")
+
+FILE_EPH_DATA = os.path.join(DIRECTORY_CACHE, "de422.bsp")
 FILE_AIRPORT_DATA = os.path.join(DIRECTORY_DATA, "airport-data.json")
 FILE_DEFINITION_DATA = os.path.join(DIRECTORY_DATA, "definitions.json")
 FILE_DEFINITION_TOGGLE = os.path.join(DIRECTORY_CACHE, "definition-toggle.txt")
-FILE_EXOPLANET_DATA = os.path.join(DIRECTORY_DATA, "exoplanet-data.json")
+
+FILE_SOLAR_SYSTEM_DATA = os.path.join(DIRECTORY_CACHE, "solar-system-data.json")
+FILE_EXOPLANET_DATA = os.path.join(DIRECTORY_CACHE, "exoplanet-data.json")
 FILE_EXOPLANET_TOGGLE = os.path.join(DIRECTORY_CACHE, "exoplanet-toggle.txt")
 FILE_PLANET_DATA = os.path.join(DIRECTORY_DATA, "planet-data.json")
-FILE_STAR_DATA = os.path.join(DIRECTORY_DATA, "star-data.json")
+FILE_STAR_DATA = os.path.join(DIRECTORY_CACHE, "star-data.json")
 FILE_STAR_TOGGLE = os.path.join(DIRECTORY_CACHE, "star-toggle.txt")
-OPENWEATHER_API_KEY = "79764014333bc411583aa941ea6817ba"
 
 
 #
@@ -103,7 +114,7 @@ def parse_spectral_type(spt):
         "M": ("Red", 3200, "red"),
     }
 
-    luminosity_classes = {
+    luminosity_classesX = {
         "I": "I",
         "II": "II",
         "III": "III",
@@ -112,6 +123,24 @@ def parse_spectral_type(spt):
         "VI": "VI",
         "VII": "VII",
     }
+    luminosity_classes = {
+        "I": "Supergiant",
+        "II": "Bright Giant",
+        "III": "Giant",
+        "IV": "Sub-giant",
+        "V": "Main Sequence",
+        "VI": "Sub-dwarf",
+        "VII": "White-dwarf",
+    }
+
+    if not spt:
+        return {
+            "type": "-",
+            "color": "-",
+            "temperature": "-",
+            "size": "-",
+            "color_code": "gray",
+        }
 
     match = re.match(r"([OBAFGKM])(\d)?([IV]+)?", spt)
     if not match:
@@ -146,22 +175,58 @@ def parse_spectral_type(spt):
     }
 
 
+def classify_luminosity_class(spectral):
+    if not spectral:
+        return "?"
+    if "Ia" in spectral or "Ib" in spectral:
+        return "🌟"  # Supergiant
+    elif "III" in spectral:
+        return "🌕"  # Giant
+    elif "IV" in spectral:
+        return "🌓"  # Subgiant
+    elif "V" in spectral:
+        return "☀️"  # Main sequence
+    elif "D" in spectral:
+        return "⚪"  # White dwarf
+    return "?"
+
+
+def classify_temp_color(temp_k):
+    if temp_k is None:
+        return ("?", "?")
+    t = float(temp_k)
+    if t >= 30000:
+        return ("Blue", "🔵")
+    elif t >= 10000:
+        return ("Blue-white", "🔹")
+    elif t >= 7500:
+        return ("White", "⚪")
+    elif t >= 6000:
+        return ("Yellow-white", "🟡")
+    elif t >= 5000:
+        return ("Yellow", "🟨")
+    elif t >= 3500:
+        return ("Orange", "🟧")
+    else:
+        return ("Red", "🔴")
+
+
 #
 #
 #
 def get_section_title(label, tag):
-    return f"${{goto 20}}${{color yellow}}${{font3}}{label} {tag} ${{hr 2}}${{font}}"
+    return f"${{goto 10}}${{color yellow}}${{font3}}{label} {tag} ${{hr 2}}${{font}}"
 
 
 #
 #
 #
 def get_line_align_left(label, data):
-    return f"${{goto 30}}${{color cyan}}${{font}}{label}:${{goto 140}}${{color white}}{data}"
+    return f"${{goto 20}}${{color cyan}}${{font}}{label}:${{goto 140}}${{color white}}{data}"
 
 
 def get_line_align_left2(label, data):
-    return f"${{goto 30}}${{color cyan}}${{font}}{label}:${{goto 180}}${{color white}}{data}"
+    return f"${{goto 20}}${{color cyan}}${{font}}{label}:${{goto 180}}${{color white}}{data}"
 
 
 #
@@ -169,7 +234,7 @@ def get_line_align_left2(label, data):
 #
 def get_line_align_right(label, data):
     return (
-        f"${{goto 30}}${{color cyan}}${{font}}{label}${{alignr}}${{color white}}{data}"
+        f"${{goto 20}}${{color cyan}}${{font}}{label}${{alignr}}${{color white}}{data}"
     )
 
 
@@ -321,6 +386,13 @@ def kilometers_to_miles(km):
 #
 def meters_to_miles(meters):
     return meters / 1609.344
+
+
+#
+#
+#
+def meters_to_feet(meters):
+    return meters * 3.28084
 
 
 #
