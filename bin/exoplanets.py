@@ -65,7 +65,7 @@ def get_exoplanets():
 
             line = (
                 f"${{goto 20}}${{color cyan}}{exoplanet[:18]}${{alignr}}"
-                f"${{color {color}}}| {host_star[:18]:<18} | "
+                f"${{color {color}}}| {host_star[:19]:<19} | "
                 f"${{color {spt_info['color_code']}}}{spt_info['color']:<13} | "
                 f"{spt_info['size']:<13}${{color {color}}} | {world_type:<13}"
                 f"${{color {color}}} | "
@@ -81,7 +81,7 @@ def get_exoplanets():
 
 if __name__ == "__main__":
     print(
-        f"${{color yellow}}${{goto 20}}Exoplanet${{alignr}}| Host star          | Temperature   | Star type     | World Type    | Az   | Alt  | Distance     | Mass      "
+        f"${{color yellow}}${{goto 20}}Exoplanet${{alignr}}| Host star           | Temperature   | Star type     | World Type    | Az   | Alt  | Distance     | Mass      "
     )
     print(f"${{goto 10}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
     try:

@@ -6,30 +6,10 @@ import exception
 import re
 from astroquery.simbad import Simbad
 from astropy.coordinates import SkyCoord, EarthLocation, AltAz
-from astropy.time import Time
 import astropy.units as u
-from datetime import datetime
+from datetime import date
 import random
 import os
-
-# Configure Simbad to return necessary fields
-Simbad.add_votable_fields("ra", "dec", "V", "sp_type")
-time = Time(datetime.utcnow())
-
-
-#
-# Function to fetch star data
-#
-def get_star_data(star_name):
-    result = Simbad.query_object(star_name)
-    if result is None:
-        raise ValueError(f"Star '{star_name}' not found.")
-    ra = result["ra"][0]
-    dec = result["dec"][0]
-    sp_type = result["sp_type"][0]
-    coord = SkyCoord(ra, dec, unit=(u.hourangle, u.deg))
-    altaz = coord.transform_to(AltAz(obstime=time, location=striker.UTAH_HERRIMAN))
-    return coord.ra.deg, coord.dec.deg, altaz.alt.deg, altaz.az.deg, sp_type
 
 
 #
@@ -59,7 +39,9 @@ def get_stars():
     with open(striker.FILE_STAR_TOGGLE, "w") as f:
         f.write(str(next_index))
 
+    today_str = date.today().isoformat()  # e.g., '2025-06-22'
     lines = []
+
     for star_name, details in selected:
         luminosity = details.get("luminosity", 0)
         mass = details.get("mass_msun", 0)
@@ -67,14 +49,21 @@ def get_stars():
         spt = details.get("spectral_type", "---")
         spt_info = striker.parse_spectral_type(spt)
 
-        ra, dec, alt, az, sp_type = get_star_data(star_name)
+        # Use today's az/alt if available in daily_positions
+        daily_positions = details.get("daily_positions", {})
+        today_position = daily_positions.get(today_str, {})
+        az = today_position.get("azimuth_deg", 0.0)
+        alt = today_position.get("altitude_deg", 0.0)
+
         constellation = details.get("constellation", "Unknown")
         meaning = details.get("meaning", "Unknown")
         distance = details.get("distance_ly", 0)
+
         color = "green" if alt > 0 else "lightgray"
 
         line = (
-            f"${{goto 20}}${{font}}${{color cyan}}{star_name}${{alignr}}| {constellation:<15} | {meaning:<16} | "
+            f"${{goto 20}}${{font}}${{color cyan}}{star_name:<12.12}"
+            f"${{alignr}}| {constellation:<15} | {meaning:<17} | "
             f"${{color {spt_info['color_code']}}}{spt_info['color']:<13} | "
             f"{spt_info['size']:<13}"
             f"${{color {color}}} | {az:03.0f}° | {alt:+03.0f}° | "
@@ -91,7 +80,7 @@ def get_stars():
 if __name__ == "__main__":
     print(striker.get_section_title("Stars", ""))
     print(
-        f"${{color yellow}}${{goto 20}}Star${{alignr}}| Constellation   | Meaning          | Temperature   | Star type     | Az   | Alt  | Distance     | Mass      "
+        f"${{color yellow}}${{goto 20}}Star${{alignr}}| Constellation   | Meaning           | Temperature   | Star type     | Az   | Alt  | Distance     | Mass      "
     )
     print(f"${{goto 10}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
     try:

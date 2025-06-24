@@ -48,12 +48,12 @@ def get_planets():
         cleaned = planet_name.replace(" barycenter", "")
         if cleaned == "earth":
             line = (
-                f"${{goto 20}}${{color cyan}}{cleaned.title()}${{alignr}}${{color {color}}}| {rotation_period_hours:>7,.0f} h | {orbit_days:>6,.0f} d | {radius_miles:>6,.0f} mi | {temp_f:>+4.0f}°F | {magnitude:+06.2f}"
+                f"${{goto 20}}${{color cyan}}{cleaned.title()}${{alignr}}${{color {color}}}| {rotation_period_hours:>8,.0f} h | {orbit_days:>6,.0f} d | {radius_miles:>6,.0f} mi | {temp_f:>+4.0f}°F | {magnitude:+06.2f}"
                 f" | {planet_type:<13} | ---- | ---- | ------------ | {mass:>7.2f} Me"
             )
         else:
             line = (
-                f"${{goto 20}}${{color cyan}}{cleaned.title()}${{alignr}}${{color {color}}}| {rotation_period_hours:>7,.0f} h | {orbit_days:>6,.0f} d | {radius_miles:>6,.0f} mi | {temp_f:>+4.0f}°F | {magnitude:+06.2f}"
+                f"${{goto 20}}${{color cyan}}{cleaned.title()}${{alignr}}${{color {color}}}| {rotation_period_hours:>8,.0f} h | {orbit_days:>6,.0f} d | {radius_miles:>6,.0f} mi | {temp_f:>+4.0f}°F | {magnitude:+06.2f}"
                 f" | {planet_type:<13} | {az_str} | {alt_str} | {distance:>9,.2f} AU | {mass:>7.2f} Me"
             )
 
@@ -68,7 +68,7 @@ def get_planets():
 if __name__ == "__main__":
     print(striker.get_section_title("Planets", ""))
     print(
-        f"${{color yellow}}${{goto 20}}Planet${{alignr}}| Rotation  | Orbit    | Radius    | Temp   | Mag    | World Type    | Az   | Alt  | Distance     | Mass      "
+        f"${{color yellow}}${{goto 20}}Planet${{alignr}}| Rotation   | Orbit    | Radius    | Temp   | Mag    | World Type    | Az   | Alt  | Distance     | Mass      "
     )
     print(f"${{goto 10}}${{voffset -8}}${{color gray}}${{hr 1}}${{voffset -5}}")
     try:
