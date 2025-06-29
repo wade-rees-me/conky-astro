@@ -1,0 +1,155 @@
+{
+  "KSLC": {
+    "name": "Salt Lake City International Airport",
+    "location": "Salt Lake City, UT",
+    "latitude": 40.7861,
+    "longitude": -111.9822,
+    "distance_from_KSLC_miles": 0.0,
+    "direction_from_KSLC_degrees": 0.0,
+    "elevation_m": 1294
+  },
+  "KOGD": {
+    "name": "Ogden\u2013Hinckley Airport",
+    "location": "Ogden, UT",
+    "latitude": 41.195,
+    "longitude": -112.016,
+    "distance_from_KSLC_miles": 28.3,
+    "direction_from_KSLC_degrees": 356.4,
+    "elevation_m": 1354
+  },
+  "KPVU": {
+    "name": "Provo Municipal Airport (Provo, Utah)",
+    "location": "Provo, UT",
+    "latitude": 40.2208,
+    "longitude": -111.7233,
+    "distance_from_KSLC_miles": 41.4,
+    "direction_from_KSLC_degrees": 160.7,
+    "elevation_m": 1368
+  },
+  "KVEL": {
+    "name": "Vernal Regional Airport",
+    "location": "Vernal, UT",
+    "latitude": 40.4409,
+    "longitude": -109.5102,
+    "distance_from_KSLC_miles": 131.8,
+    "direction_from_KSLC_degrees": 99.6,
+    "elevation_m": 1602
+  },
+  "KPIH": {
+    "name": "Pocatello Regional Airport",
+    "location": "Pocatello, ID",
+    "latitude": 42.9098,
+    "longitude": -112.5966,
+    "distance_from_KSLC_miles": 150.1,
+    "direction_from_KSLC_degrees": 348.0,
+    "elevation_m": 1355
+  },
+  "KRKS": {
+    "name": "Rock Springs\u2013Sweetwater County Airport",
+    "location": "Rock Springs, WY",
+    "latitude": 41.5942,
+    "longitude": -109.065,
+    "distance_from_KSLC_miles": 161.6,
+    "direction_from_KSLC_degrees": 68.8,
+    "elevation_m": 2055
+  },
+  "KTWF": {
+    "name": "Magic Valley Regional Airport",
+    "location": "Twin Falls, ID",
+    "latitude": 42.4817,
+    "longitude": -114.4878,
+    "distance_from_KSLC_miles": 174.5,
+    "direction_from_KSLC_degrees": 313.0,
+    "elevation_m": 1259
+  },
+  "KCNY": {
+    "name": "Canyonlands Field",
+    "location": "Moab, UT",
+    "latitude": 38.755,
+    "longitude": -109.754,
+    "distance_from_KSLC_miles": 183.6,
+    "direction_from_KSLC_degrees": 139.1,
+    "elevation_m": 1388
+  },
+  "KIDA": {
+    "name": "Idaho Falls Regional Airport",
+    "location": "Idaho Falls, ID",
+    "latitude": 43.5146,
+    "longitude": -112.0708,
+    "distance_from_KSLC_miles": 188.6,
+    "direction_from_KSLC_degrees": 358.7,
+    "elevation_m": 1441
+  },
+  "KEKO": {
+    "name": "Elko Regional Airport",
+    "location": "Elko, NV",
+    "latitude": 40.8249,
+    "longitude": -115.792,
+    "distance_from_KSLC_miles": 199.3,
+    "direction_from_KSLC_degrees": 272.0,
+    "elevation_m": 1538
+  },
+  "KRXE": {
+    "name": "Rexburg\u2013Madison County Airport",
+    "location": "Rexburg, ID",
+    "latitude": 43.8339,
+    "longitude": -111.805,
+    "distance_from_KSLC_miles": 210.8,
+    "direction_from_KSLC_degrees": 2.4,
+    "elevation_m": 1480
+  },
+  "KBTM": {
+    "name": "Bert Mooney Airport",
+    "location": "Butte, MT",
+    "latitude": 45.9548,
+    "longitude": -112.4976,
+    "distance_from_KSLC_miles": 358.1,
+    "direction_from_KSLC_degrees": 356.0,
+    "elevation_m": 1684
+  },
+  "KHLN": {
+    "name": "Helena Regional Airport",
+    "location": "Helena, MT",
+    "latitude": 46.6101,
+    "longitude": -111.9891,
+    "distance_from_KSLC_miles": 402.4,
+    "direction_from_KSLC_degrees": 360.0,
+    "elevation_m": 1164
+  },
+  "KMSO": {
+    "name": "Missoula Montana Airport",
+    "location": "Missoula, MT",
+    "latitude": 46.9164,
+    "longitude": -114.0906,
+    "distance_from_KSLC_miles": 436.4,
+    "direction_from_KSLC_degrees": 346.8,
+    "elevation_m": 973
+  },
+  "LPPT": {
+   "name": "Humberto Delgado Airport",
+    "location": "Lisbon, Portugal",
+    "latitude": 38.7742,
+    "longitude": -9.1342,
+    "distance_from_KSLC_miles": 5070.5,
+    "direction_from_KSLC_degrees": 63.2,
+    "elevation_m": 114
+  },
+  "LPFR": {
+    "name": "Faro Airport",
+    "location": "Faro, Portugal",
+    "latitude": 37.0144,
+    "longitude": -7.9659,
+    "distance_from_KSLC_miles": 5183.9,
+    "direction_from_KSLC_degrees": 64.5,
+    "elevation_m": 7
+  },
+  "LPPR": {
+    "name": "Francisco Sá Carneiro Airport",
+    "location": "Porto, Portugal",
+    "latitude": 41.2421,
+    "longitude": -8.6781,
+    "distance_from_KSLC_miles": 5021.4,
+    "direction_from_KSLC_degrees": 63.1,
+    "elevation_m": 69
+  }
+}
