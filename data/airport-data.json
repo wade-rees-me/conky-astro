@@ -124,5 +124,32 @@
     "distance_from_KSLC_miles": 436.4,
     "direction_from_KSLC_degrees": 346.8,
     "elevation_m": 973
+  },
+  "LPPT": {
+   "name": "Humberto Delgado Airport",
+    "location": "Lisbon, Portugal",
+    "latitude": 38.7742,
+    "longitude": -9.1342,
+    "distance_from_KSLC_miles": 5070.5,
+    "direction_from_KSLC_degrees": 63.2,
+    "elevation_m": 114
+  },
+  "LPFR": {
+    "name": "Faro Airport",
+    "location": "Faro, Portugal",
+    "latitude": 37.0144,
+    "longitude": -7.9659,
+    "distance_from_KSLC_miles": 5183.9,
+    "direction_from_KSLC_degrees": 64.5,
+    "elevation_m": 7
+  },
+  "LPPR": {
+    "name": "Francisco Sá Carneiro Airport",
+    "location": "Porto, Portugal",
+    "latitude": 41.2421,
+    "longitude": -8.6781,
+    "distance_from_KSLC_miles": 5021.4,
+    "direction_from_KSLC_degrees": 63.1,
+    "elevation_m": 69
   }
 }
