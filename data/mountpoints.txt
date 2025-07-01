@@ -1,0 +1,5 @@
+/
+/home
+/mnt/synology/volume1
+/mnt/synology/volume2
+/mnt/synology/volume3

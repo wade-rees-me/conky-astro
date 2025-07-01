@@ -3,14 +3,13 @@
 import psutil
 import striker
 import exception
+import os
 
-mountpoints = [
-    "/",
-    "/home",
-    "/mnt/synology/volume1",
-    "/mnt/synology/volume2",
-    "/mnt/synology/volume3",
-]
+
+# Function to read mount points from a file
+def read_mount_points(file_path):
+    with open(file_path, "r") as f:
+        return [line.strip() for line in f.readlines() if line.strip()]
 
 
 #
@@ -18,6 +17,8 @@ mountpoints = [
 #
 def get_disk_usage():
     results = f"${{font}}"
+    mountpoints_file = os.path.join(striker.CONKY_ASTRO_DATA, "mountpoints.txt")
+    mountpoints = read_mount_points(mountpoints_file)
 
     i = 1
     for mountpoint in mountpoints:

@@ -28,8 +28,6 @@ def get_rotation_index(total):
 
 def get_exoplanets():
     today = datetime.utcnow().date()
-    # obstime = Time.now()
-    # altaz_frame = AltAz(obstime=obstime, location=striker.UTAH_HERRIMAN)
     exoplanet_data = striker.load_json(striker.FILE_EXOPLANET_DATA)
     exoplanets = list(exoplanet_data.items())
     total = len(exoplanets)

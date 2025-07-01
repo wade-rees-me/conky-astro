@@ -5,9 +5,6 @@ import json
 import exception
 import re
 
-# from astroquery.simbad import Simbad
-# from astropy.coordinates import SkyCoord, EarthLocation, AltAz
-# import astropy.units as u
 from datetime import date
 import random
 import os

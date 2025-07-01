@@ -60,31 +60,8 @@ def apparent_brightness_lsun(luminosity_lsun, distance_pc):
     return round(luminosity_lsun / (4 * math.pi * distance_pc**2), 6)
 
 
-# Create TAP connection
-tap = TapPlus(url="https://exoplanetarchive.ipac.caltech.edu/TAP")
-
-# query = """
-# SELECT TOP 36
-#    pl_name,
-#    pl_bmassj,
-#    pl_bmasse,
-#    pl_orbsmax,
-#    ra,
-#    dec,
-#    hostname,
-#    st_teff,
-#    st_rad,
-#    st_mass,
-#    sy_dist,
-#    st_spectype
-# FROM pscomppars
-# WHERE pl_bmasse IS NOT NULL AND sy_dist IS NOT NULL AND st_spectype IS NOT NULL
-#    AND MOD(CAST(ra * 1000 AS INTEGER), 10) = 3
-# ORDER BY sy_dist ASC
-# """
-
-
 # TAP query: fetch 1000 nearest exoplanets
+tap = TapPlus(url="https://exoplanetarchive.ipac.caltech.edu/TAP")
 query = """
 SELECT TOP 1000
     pl_name, pl_bmassj, pl_bmasse, pl_orbsmax, ra, dec, hostname,
@@ -102,17 +79,11 @@ table = job.get_results()
 rows = list(table)
 random.shuffle(rows)
 selected = rows[:36]
+exoplanet_data = {}
 
 # Build 90-day observation window
 today = datetime.utcnow().date()
 dates = [today + timedelta(days=i) for i in range(90)]
-
-# job = tap.launch_job(query)
-# table = job.get_results()
-# today = datetime.utcnow().date()
-# dates = [today + timedelta(days=i) for i in range(90)]
-
-exoplanet_data = {}
 
 # for row in table:
 for row in selected:
@@ -127,7 +98,6 @@ for row in selected:
     mass_msun = get_safe(row["st_mass"])
     distance_pc = get_safe(row["sy_dist"], ndigits=2)
     world_type = classify_world_type(mass_earth)
-    # distance_py = get_safe(row["sy_dist"], ndigits=2)
     distance_ly = round(distance_pc * 3.26156, 2) if distance_pc else None
     spectral_type = (
         row["st_spectype"]
