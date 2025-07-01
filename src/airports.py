@@ -23,10 +23,10 @@ ROTATION_INTERVAL_SECONDS = 3 * 60
 
 def get_current_airports(airport_coords, n=4):
     """
-    Return a rotating selection of 'n' airport codes (excluding KSLC)
+    Return a rotating selection of 'n' airport codes (excluding the home airport)
     based on the current time interval.
     """
-    rotating_keys = [key for key in airport_coords if key != "KSLC"]
+    rotating_keys = [key for key in airport_coords if key != striker.CONKY_AIRPORT_CODE]
     now = time.time()
     base_index = int(now // ROTATION_INTERVAL_SECONDS) % len(rotating_keys)
     return [
@@ -96,13 +96,13 @@ def calculate_density_altitude(elevation_ft, temp_c, pressure_inhg):
     return da
 
 
-def display_weather(code, info, data, is_kslc):
+def display_weather(code, info, data, is_home_airport):
     name = info.get("name")
     location = info.get("location")
     elevation_m = info.get("elevation_m")
     elevation_ft = striker.meters_to_feet(elevation_m)
-    distance = info.get("distance_from_KSLC_miles")
-    direction = info.get("direction_from_KSLC_degrees")
+    distance = info.get("distance_from_home_miles")
+    direction = info.get("direction_from_home_degrees")
 
     main = data["main"]
     wind = data.get("wind", {})
@@ -149,7 +149,7 @@ def display_weather(code, info, data, is_kslc):
         visibility_str = f"{striker.meters_to_miles(visibility_m):.1f} miles"
 
     # Header
-    if is_kslc:
+    if is_home_airport:
         print(
             f"${{goto 10}}${{color yellow}}${{font3}}{name} - {location} ({code}) ${{hr 2}}${{font}}"
         )
@@ -179,15 +179,15 @@ def display_weather(code, info, data, is_kslc):
     )
 
 
-def go_weather(code, info, is_kslc):
+def go_weather(code, info, is_home_airport):
     lat = info["latitude"]
     lon = info["longitude"]
     weather_data = get_weather(lat, lon, striker.KEY_OPEN_WEATHER_API)
-    display_weather(code, info, weather_data, is_kslc)
+    display_weather(code, info, weather_data, is_home_airport)
 
 
-def get_kslc_data(airport_coords):
-    return airport_coords.get("KSLC")
+def get_home_airportdata(airport_coords):
+    return airport_coords.get(striker.CONKY_AIRPORT_CODE)
 
 
 # --- Main Execution ---
@@ -195,9 +195,9 @@ if __name__ == "__main__":
     try:
         airport_coords = striker.load_json(striker.FILE_AIRPORT_DATA)
 
-        # Show KSLC first
-        kslc_info = get_kslc_data(airport_coords)
-        go_weather("KSLC", kslc_info, True)
+        # Show home airport first
+        home_airportinfo = get_home_airportdata(airport_coords)
+        go_weather(striker.CONKY_AIRPORT_CODE, home_airportinfo, True)
 
         # Show other rotating airports
         rotating_airports = get_current_airports(airport_coords)

@@ -13,6 +13,6 @@ def add_distance_and_direction(airports, reference_key="KSLC"):
         lon = data["longitude"]
         distance = striker.haversine_distance(kslc_lat, kslc_lon, lat, lon)
         bearing = striker.initial_bearing(kslc_lat, kslc_lon, lat, lon)
-        data["distance_from_KSLC_miles"] = round(distance, 1)
-        data["direction_from_KSLC_degrees"] = round(bearing, 1)
+        data["distance_from_home_miles"] = round(distance, 1)
+        data["direction_from_home_degrees"] = round(bearing, 1)
     return airports

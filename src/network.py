@@ -50,20 +50,26 @@ def get_network():
     down_speed = data["down_speed"] / 1024
     total_up = data["total_up"] / striker.CONVERT_GB
     up_speed = data["up_speed"] / 1024
-
     results = "${font}"
-    results += striker.get_line_align_right(
-        ("Public (NordVPN: ${color green}86.38.51.194${color cyan}) | Local | Gateway"),
-        (
-            '${if_match "${exec curl -s ifconfig.me}" != "86.38.51.194"}${color red}'
-            + "${else}${color green}${endif}"
-            + "${exec curl -s ifconfig.me} | "
-            + "${exec hostname -I | awk '{print $1}'} | "
-            + "${exec ip route | awk '/default/ {print $3}'}"
-            + " | ${color green}Connected\n"
-            if is_connected()
-            else "${color red}Disconnected\n"
-        ),
+
+    # Fetch the public IP using curl
+    public_ip_from_curl = "${execi 1800 curl -s ifconfig.me}"
+    public_ip = "${execi 1800 curl -s ifconfig.me}"
+    local_ip = "${exec hostname -I | awk '{print $1}'}"
+    gateway = "${exec ip route | awk '/default/ {print $3}'}"
+
+    # Check internet connectivity
+    connection_status = (
+        "${color green}Connected" if is_connected() else "${color red}Disconnected"
+    )
+
+    # Create the formatted results string
+    results = (
+        striker.get_line_align_right(
+            f"Public (${{color green}}{striker.CONKY_PUBLIC_IP}${{color cyan}})",
+            f"Public: ${{color green}}{public_ip} | Local: {local_ip} | Gateway: {gateway} | {connection_status}",
+        )
+        + "\n"
     )
     results += striker.get_line_align_right(
         "Total transferred(speed)",

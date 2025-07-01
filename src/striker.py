@@ -7,54 +7,45 @@ import json
 import re
 import os
 
+
 # Earth's radius in miles
 EARTH_RADIUS_MI = 3958.8
 
 #
 CONVERT_GB = 1024**3
 
-#
-LOCAL_IP = "192.168.0.201"
-NORD_VPN_IP = "86.38.51.194"
-
-# Load environment variables
-CONKY_HOME = os.environ.get("CONKY_HOME", "/home/wade/Conky")
-KEY_OPEN_WEATHER_API = os.getenv("KEY_OPEN_WEATHER_API")
-
 # Load and convert latitude and longitude from environment variables
 try:
-    KSLC_LATITUDE = float(os.getenv("KSLC_LATITUDE", "40.5144"))
-    KSLC_LONGITUDE = float(os.getenv("KSLC_LONGITUDE", "-112.0325"))
-    KSLC_EVEVATION = float(os.getenv("KSLC_EVEVATION", "1544"))
+    CONKY_LOCAL_IP = os.getenv("CONKY_LOCAL_IP")
+    CONKY_PUBLIC_IP = os.getenv("CONKY_PUBLIC_IP")
+
+    KEY_OPEN_WEATHER_API = os.getenv("KEY_OPEN_WEATHER_API")
+
+    CONKY_HOME = os.environ.get("CONKY_HOME", "/home/wade/Conky")
+    CONKY_ASTRO_HOME = os.getenv("CONKY_ASTRO_HOME")
+    CONKY_AIRPORT_CODE = os.getenv("KSLC_CODE", "KSLC")
 except ValueError as e:
-    raise ValueError(f"Invalid latitude or longitude value: {e}")
+    raise ValueError(f"Invalid environment variables: {e}")
 
-# Define Earth location using loaded coordinates
-UTAH_SALT_LAKE_CITY = EarthLocation(
-    lat=KSLC_LATITUDE * u.deg, lon=KSLC_LONGITUDE * u.deg, height=KSLC_EVEVATION * u.m
-)
-UTAH_HERRIMAN = EarthLocation(
-    lat=KSLC_LATITUDE * u.deg, lon=KSLC_LONGITUDE * u.deg, height=KSLC_EVEVATION * u.m
-)
-
+#
+CONKY_ASTRO_SCRIPTS = os.path.join(CONKY_ASTRO_HOME, "scripts")
+CONKY_ASTRO_DATA = os.path.join(CONKY_ASTRO_HOME, "data")
+CONKY_ASTRO_CACHE = os.path.join(CONKY_ASTRO_HOME, "cache")
 
 #
 # add constants
 #
-DIRECTORY_DATA = os.path.join(CONKY_HOME, "conky-python", "data")
-DIRECTORY_CACHE = os.path.join(CONKY_HOME, "conky-python", "cache")
+FILE_EPH_DATA = os.path.join(CONKY_ASTRO_CACHE, "de422.bsp")
+FILE_AIRPORT_DATA = os.path.join(CONKY_ASTRO_DATA, "airport-data.json")
+FILE_DEFINITION_DATA = os.path.join(CONKY_ASTRO_DATA, "definitions.json")
+FILE_DEFINITION_TOGGLE = os.path.join(CONKY_ASTRO_CACHE, "definition-toggle.txt")
 
-FILE_EPH_DATA = os.path.join(DIRECTORY_CACHE, "de422.bsp")
-FILE_AIRPORT_DATA = os.path.join(DIRECTORY_DATA, "airport-data.json")
-FILE_DEFINITION_DATA = os.path.join(DIRECTORY_DATA, "definitions.json")
-FILE_DEFINITION_TOGGLE = os.path.join(DIRECTORY_CACHE, "definition-toggle.txt")
-
-FILE_SOLAR_SYSTEM_DATA = os.path.join(DIRECTORY_CACHE, "solar-system-data.json")
-FILE_EXOPLANET_DATA = os.path.join(DIRECTORY_CACHE, "exoplanet-data.json")
-FILE_EXOPLANET_TOGGLE = os.path.join(DIRECTORY_CACHE, "exoplanet-toggle.txt")
-FILE_PLANET_DATA = os.path.join(DIRECTORY_DATA, "planet-data.json")
-FILE_STAR_DATA = os.path.join(DIRECTORY_CACHE, "star-data.json")
-FILE_STAR_TOGGLE = os.path.join(DIRECTORY_CACHE, "star-toggle.txt")
+FILE_SOLAR_SYSTEM_DATA = os.path.join(CONKY_ASTRO_CACHE, "solar-system-data.json")
+FILE_EXOPLANET_DATA = os.path.join(CONKY_ASTRO_CACHE, "exoplanet-data.json")
+FILE_EXOPLANET_TOGGLE = os.path.join(CONKY_ASTRO_CACHE, "exoplanet-toggle.txt")
+FILE_PLANET_DATA = os.path.join(CONKY_ASTRO_DATA, "planet-data.json")
+FILE_STAR_DATA = os.path.join(CONKY_ASTRO_CACHE, "star-data.json")
+FILE_STAR_TOGGLE = os.path.join(CONKY_ASTRO_CACHE, "star-toggle.txt")
 
 
 #
