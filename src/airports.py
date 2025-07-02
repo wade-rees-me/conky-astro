@@ -21,21 +21,32 @@ ROTATION_INTERVAL_SECONDS = 3 * 60
 # --- Helper Functions ---
 
 
-def get_current_airports(airport_coords, n=4):
+def get_current_airports(airport_coords, n=3):
     """
     Return a rotating selection of 'n' airport codes (excluding the home airport)
     based on the current time interval.
     """
-    rotating_keys = [key for key in airport_coords if key != striker.CONKY_AIRPORT_CODE]
+    # Get fixed airports that should always be displayed
+    always_display_airports = striker.CONKY_AIRPORT_CODE.split(",")
+
+    # Remove always display airports from the rotating list
+    rotating_keys = [
+        key for key in airport_coords if key not in always_display_airports
+    ]
+
     now = time.time()
     base_index = int(now // ROTATION_INTERVAL_SECONDS) % len(rotating_keys)
-    return [
+    result = []
+    # Get the rotating airports
+    result += [
         (
             rotating_keys[(base_index + i) % len(rotating_keys)],
             airport_coords[rotating_keys[(base_index + i) % len(rotating_keys)]],
         )
         for i in range(n)
     ]
+
+    return result
 
 
 def get_weather(lat, lon, api_key):
@@ -195,11 +206,22 @@ if __name__ == "__main__":
     try:
         airport_coords = striker.load_json(striker.FILE_AIRPORT_DATA)
 
-        # Show home airport first
-        home_airportinfo = get_home_airportdata(airport_coords)
-        go_weather(striker.CONKY_AIRPORT_CODE, home_airportinfo, True)
+        # Show home airports first (from CONKY_AIRPORT_CODE)
+        home_airports = striker.CONKY_AIRPORT_CODE.split(",")
 
-        # Show other rotating airports
+        # Flag to track the first airport
+        is_first_airport = True
+
+        for airport_code in home_airports:
+            home_airportinfo = airport_coords.get(airport_code)
+            if home_airportinfo:
+                # Only set is_home_airport=True for the first airport
+                go_weather(airport_code, home_airportinfo, is_first_airport)
+
+                # After the first airport, set the flag to False
+                is_first_airport = False
+
+        # Show other rotating airports (excluding the ones in CONKY_AIRPORT_CODE)
         rotating_airports = get_current_airports(airport_coords)
         for code, info in rotating_airports:
             go_weather(code, info, False)

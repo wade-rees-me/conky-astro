@@ -23,7 +23,7 @@ try:
 
     CONKY_HOME = os.environ.get("CONKY_HOME", "/home/wade/Conky")
     CONKY_ASTRO_HOME = os.getenv("CONKY_ASTRO_HOME")
-    CONKY_AIRPORT_CODE = os.getenv("KSLC_CODE", "KSLC")
+    CONKY_AIRPORT_CODE = os.getenv("CONKY_AIRPORT_CODE", "KSLC")
 except ValueError as e:
     raise ValueError(f"Invalid environment variables: {e}")
 
